@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{ page.title }}</title>
+	{% include style.html %}
+</head>
+<body>
+		{% include navigation.html %}
+		<div class="container">
+
+			<div class="row">
+				<div class="span12">
+				<h1>{{ page.title }}</h1>
+				{{ content }}
+				{% if page.images && page.images.size > 0 %}
+				<hr>
+				<div class="row">
+					<ul class="thumbnails">
+						{% for image in page.images %}
+						<li class="span4">
+							<div class="thumbnail">
+								<a data-toggle="lightbox" href="#image-{{ forloop.index }}">
+									<img src="{{ image.src }}" alt="{{ image.label }}">
+								</a>
+								{% if image.label %}
+								<h4>{{ image.label }}</h4>
+								{% endif %}
+								{% if image.caption %}
+								<p>{{ image.caption }}</p>
+								{% endif %}
+							</div>
+						</li>
+						{% endfor %}
+					</ul>
+					{% for image in page.images %}
+					<div id="image-{{forloop.index}}" class="lightbox hide fade"  tabindex="-1" role="dialog" aria-hidden="true">
+						<div class='lightbox-header'>
+							<button type="button" class="close" data-dismiss="lightbox" aria-hidden="true">&times;</button>
+						</div>
+						<div class='lightbox-content'>
+							<img src="{{image.src}}">
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+				{% endif %}
+			</div>
+		</div>
+
+			<hr>
+
+			<footer>
+				{% include copyright.html %}
+			</footer>
+		</div>
+
+	{% include javascript.html %}
+</body>
+</html>

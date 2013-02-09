@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{ page.title }}</title>
+	{% include style.html %}
+</head>
+<body>
+		{% include navigation %}
+		<div class="container">
+			<div class="row">
+				<div class="span3">
+					{% include sidebar %}
+				</div>
+				
+				<div class="span9">
+					<ul class="breadcrumb">
+					  <li>{{ page.category }} <span class="divider">/</span></li>
+					  <li class="active">{{ page.title }}</li>
+					</ul>
+
+					<h3 class="code">{{ page.title }}({{ page.arguments | map:'name' | join:',' | replace:',',', ' }})</h2>
+
+					{% if page.description %}
+						<h3>Overview</h3>
+						{{ page.description }}
+					{% endif %}
+					
+					{% if page.arguments %}
+						<h4>Arguments</h4>
+						<dl>
+							{% for arg in page.arguments %}
+							<dt><code>{{ arg.name }}{% if arg.type %}: {{ arg.type }}{% endif %}</code></dt>
+							{% if arg.description %}<dd>{{ arg.description }}</dd>{% endif %}
+							</li>
+							{% endfor %}
+						</dl>
+					{% endif %}
+
+					{% if page.returns %}
+						<h4>Returns</h4>
+						<dl>
+							{% for arg in page.returns %}
+							<dt><code>{{ arg.name }}{% if arg.type %}: {{ arg.type }}{% endif %}</code></dt>
+							{% if arg.description %}<dd>{{ arg.description }}</dd>{% endif %}
+							</li>
+							{% endfor %}
+						</dl>
+					{% endif %}
+
+					{% if page.events %}
+					<h4>Events</h4>
+					<ul>
+						{% for event in page.events %}
+						{% comment %} TODO: Generate links to events. {% endcomment %}
+						<li><code>{{ event }}</code></li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+
+					{% if content %}
+						<h3>Notes & Examples</h3>
+						{{ content }}
+					{% endif %}
+				</div>
+
+			</div>
+
+			<footer>
+				{% include copyright.html %}
+			</footer>
+		</div>
+
+	{% include javascript.html %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{ page.title }}</title>
+	{% include style.html %}
+</head>
+<body>
+		{% include navigation %}
+		<div class="container">
+			<div class="row">
+				<div class="span3">
+					{% include sidebar %}
+				</div>
+
+				<div class="span9">
+					{{ content }}
+				</div>
+
+			</div>
+
+			<footer>
+				{% include copyright.html %}
+			</footer>
+		</div>
+
+	{% include javascript.html %}
+</body>
+</html>

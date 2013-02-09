@@ -1,0 +1,14 @@
+# The name of the author of the portfolio.
+author: Zachary Lewis
+
+# The URL where the portfolio is hosted.
+url: http://zacharylew.is
+
+# The subdirectory containing your portfolio.
+baseurl: /wow-addon-api
+
+# The title of the site.
+title: World of Warcraft AddOn API
+
+# Permalink settings
+permalink: /:categories/:title
