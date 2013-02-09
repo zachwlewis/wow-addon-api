@@ -1,0 +1,1 @@
+An easy to use API for developing _World of Warcraft_ AddOns.
